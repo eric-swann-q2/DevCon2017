@@ -9,18 +9,21 @@ module.exports = {
   },
   // https://github.com/feross/standard/blob/master/RULES.md#javascript-standard-style
   extends: [
-    'standard'
+    'prettier'
   ],
   // required to lint *.vue files
   plugins: [
     'html',
-    'import'
+    'import',
+    'prettier'
   ],
   globals: {
-    'cordova': true,
     'DEV': true,
     'PROD': true,
-    '__THEME': true
+    '__THEME': true,
+    'describe': true,
+    'expect': true,
+    'test': true
   },
   // add your custom rules here
   'rules': {
@@ -34,6 +37,9 @@ module.exports = {
     'import/export': 2,
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'brace-style': [2, 'stroustrup', { 'allowSingleLine': true }]
+
+    "comma-dangle": ["error", "only-multiline"],
+    "space-before-function-paren": ["error", "never"],
+    "object-property-newline": "off"
   }
 }
