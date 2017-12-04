@@ -1,19 +1,19 @@
 <template>
-  <titled-card title="Shop Speakers">
+  <div class="main-margin">
     <div class="row xs-gutter">
       <div v-for="(product, i) in products" :key="i">
         <product-tile :value="product" />
       </div>
     </div>
-  </titled-card>
+  </div>
 </template>
 
 <script>
 import actions from '../services/state/actions'
-import ProductTile from './ProductTile'
+import ProductTile from './CartItem'
 
 export default {
-  name: 'product-list',
+  name: 'cart',
   async created() {
     await this.fetchData()
   },
@@ -33,5 +33,10 @@ export default {
 }
 </script>
 
+<style scoped>
+.main-margin {
+  margin: 10px;
+}
+</style>
 
 

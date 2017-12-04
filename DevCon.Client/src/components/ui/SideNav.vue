@@ -1,7 +1,7 @@
 <template>
   <q-list>
     <q-list-header class="menuHeader"><img src="/statics/logo_small.png" />
-      <span class="menuHeaderText text-grey-8">Account Opening</span>
+      <span class="menuHeaderText text-grey-8">Mega Awesome Speaker Store</span>
     </q-list-header>
     <q-side-link sparse class="relative-position" :item="true" v-for="(item, i) in navItems" :key="i" :to="item.path" :exact="item.meta.exact" >
       <q-item-side :icon="item.meta.icon" color="primary" />

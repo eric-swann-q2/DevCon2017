@@ -1,6 +1,7 @@
 import Vue from "vue"
 import Router from "vue-router"
 import ProductList from './components/ProductList'
+import Cart from './components/Cart'
 
 Vue.use(Router);
 
@@ -17,7 +18,12 @@ export const routes = [
   {
     path: '/productlist',
     component: ProductList,
-    meta: { navText: 'Products', icon: 'store', includeInNav: true }
+    meta: { navText: 'Shop til ye drop!', icon: 'store', includeInNav: true }
+  },
+  {
+    path: '/cart',
+    component: Cart,
+    meta: { navText: 'Ma stuff', icon: 'shopping_cart', includeInNav: true }
   },
 
   // Always leave this last one

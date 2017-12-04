@@ -15,7 +15,7 @@
         <side-nav :routes="routes" />
       </div>
 
-      <div>
+      <div class="main-content">
         <toast :messages="messages" />
         <message-list :messages="errors"></message-list>
         <std-trans>
@@ -54,4 +54,10 @@ export default {
   }
 };
 </script>
+<style scoped>
+  .main-content {
+    padding: 10px;
+  }
+</style>
+
 

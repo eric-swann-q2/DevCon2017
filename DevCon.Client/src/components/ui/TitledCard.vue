@@ -18,8 +18,8 @@ export default {
     titleClass() {
       return {
         'bg-warning': this.isWarning,
-        'bg-light': !this.isWarning,
-        'text-grey-8': !this.isWarning
+        'bg-primary': !this.isWarning,
+        'text-white': !this.isWarning
       }
     }
   }

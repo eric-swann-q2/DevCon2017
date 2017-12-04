@@ -7,10 +7,8 @@ import StdCol from './StdCol'
 import StdForm from './StdForm'
 import StdTrans from './StdTrans'
 import StdListItem from './StdListItem'
-import TabRouterView from './TabRouterView'
 import TitledCard from './TitledCard'
 import Toast from './Toast'
-import ListSubheader from './ListSubheader'
 
 class Registrar {
   registerAll(vue) {
@@ -23,10 +21,8 @@ class Registrar {
     vue.component(StdForm.name, StdForm)
     vue.component(StdTrans.name, StdTrans)
     vue.component(StdListItem.name, StdListItem)
-    vue.component(TabRouterView.name, TabRouterView)
     vue.component(TitledCard.name, TitledCard)
     vue.component(Toast.name, Toast)
-    vue.component(ListSubheader.name, ListSubheader)
   }
 }
 

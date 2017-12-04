@@ -20,7 +20,6 @@ import Quasar, {
   QField, QInput, QRadio, QSelect, QToggle,
   QList, QListHeader, QSideLink, QCollapsible,
   QItemSide, QItemMain, QItemSeparator, QItem, QItemTile,
-  QDataTable,
   Ripple
 } from 'quasar'
 import uiRegistrar from './components/ui/ComponentRegistrar'
@@ -39,8 +38,7 @@ Vue.use(Quasar, {
     QBtn, QIcon, QPopover, QTooltip, QModal,
     QField, QInput, QRadio, QSelect, QToggle, 
     QList, QListHeader, QSideLink, QCollapsible,
-    QItemSide, QItemMain, QItemSeparator, QItem, QItemTile,
-    QDataTable],
+    QItemSide, QItemMain, QItemSeparator, QItem, QItemTile],
   directives: [Ripple]
 })
 
