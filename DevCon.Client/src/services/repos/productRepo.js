@@ -1,9 +1,10 @@
 import apiHelper from '../apiHelper'
 
-export class CustomFormRepo {
+export class ProductRepo {
   
-  getTenantFormLookups(tenantId) {
-    return apiHelper.get(`management/financialinstitutions/${tenantId}/dynamicforms/lookups`)
+  getProducts(tenantId) {
+    debugger
+    return apiHelper.get('products')
   }
 
   // async getCustomForm(tenantId, customFormId) {
@@ -40,6 +41,6 @@ export class CustomFormRepo {
   // }
 }
 
-const _customFormRepo = new CustomFormRepo()
+const _productRepo = new ProductRepo()
 
-export default _customFormRepo
+export default _productRepo

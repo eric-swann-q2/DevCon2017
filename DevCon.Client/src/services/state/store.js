@@ -2,6 +2,7 @@ import Vuex from 'vuex'
 import Vue from 'vue'
 import mutations from './mutations'
 import apiStoreHelper from './apiStoreHelper'
+import productRepo from '../repos/productRepo'
 
 Vue.use(Vuex)
 
@@ -19,7 +20,9 @@ const store = new Vuex.Store({
 
     errors: [],
     messages: [],
-    lastCommandResult: null
+    lastCommandResult: null,
+
+    products: []
   },
   mutations: {
     setProcessing(state) {
@@ -38,16 +41,20 @@ const store = new Vuex.Store({
         state.errors = errors
       }
       state.messages = []
+    },
+
+    setProducts(state, products) {
+      state.products = products
     }
   },
 
   actions: {
-    // async retrieveServices({ state, commit }) {
-    //   if (state.services.length === 0) {
-    //     const result = await apiStoreHelper.processApiGetCall(commit, serviceRepo.getServiceList())
-    //     commit(mutations.SET_SERVICES, result.data)
-    //   }
-    // }
+    async retrieveProducts({ state, commit }) {
+      if (state.products.length === 0) {
+        const result = await apiStoreHelper.processApiGetCall(commit, productRepo.getProducts())
+        commit(mutations.SET_PRODUCTS, result.data)
+      }
+    }
   },
   getters: {
     hasErrors(state) {

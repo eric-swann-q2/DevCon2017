@@ -21,6 +21,7 @@ export class ApiHelper {
 
   async get(url, requestConfig = null) {
     const response = await this._httpClient.get(url, requestConfig)
+    debugger
     return this._processResponse(response)
   }
 
@@ -36,8 +37,8 @@ export class ApiHelper {
   _processResponse(response) {
     if (response.status < 400) {
       let data = null
-      if (response.data && response.data.data) {
-        data = response.data.data
+      if (response.data) {
+        data = response.data
       }
       return { status: response.status, data: data, hasErrors: false }
     }

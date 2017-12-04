@@ -1,4 +1,3 @@
-import DateEditor from './DateEditor'
 import Message from './Message'
 import MessageList from './MessageList'
 import ResultsPanel from './ResultsPanel'
@@ -15,7 +14,6 @@ import ListSubheader from './ListSubheader'
 
 class Registrar {
   registerAll(vue) {
-    vue.component(DateEditor.name, DateEditor)
     vue.component(Message.name, Message)
     vue.component(MessageList.name, MessageList)
     vue.component(ResultsPanel.name, ResultsPanel)
