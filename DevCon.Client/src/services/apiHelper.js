@@ -25,7 +25,7 @@ export class ApiHelper {
   }
 
   async delete(url, requestConfig = null) {
-    const response = await this._httpClient.get(url, requestConfig)
+    const response = await this._httpClient.delete(url, requestConfig)
     return this._processResponse(response)
   }
 

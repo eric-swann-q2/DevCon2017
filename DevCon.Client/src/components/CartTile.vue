@@ -17,8 +17,13 @@
     </q-card-main>
     <q-card-separator />
     <q-card-actions>
-      <div class="col actions">
-        <q-input class="quantity" :min="1" :max="99" type="number" prefix="Quantity: " v-model="value.quantity" @blur="changeQuantity" />
+      <div class="row xs-gutter">
+        <div class="col-6">
+          <q-btn color="green-5" @click="remove()">Remove</q-btn>
+        </div>
+        <div class="col-6">
+          <q-input class="quantity" :min="1" :max="99" type="number" prefix="Quantity: " :value="value.quantity" @blur="changeQuantity" />
+        </div>
       </div>
     </q-card-actions>
   </q-card>
@@ -28,15 +33,16 @@
 import actions from '../services/state/actions'
 
 export default {
-  name: 'cart-item',
+  name: 'cart-tile',
   props: ['value'],
   methods: {
     changeQuantity() {
-      if(!this.quantity || this.quantity < 1) {
-        this.quantity = 1
-      } else if (this.quantity > 99) {
-        this.quantity = 99
-      }
+
+    },
+    remove(){
+      this.$store.dispatch(actions.REMOVE_CART_ITEM, {
+          sku: this.value.sku
+        })
     }
   }
 }
@@ -70,8 +76,8 @@ export default {
 }
 
 .quantity {
-  margin-top:0px;
-  margin-bottom:0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .actions {

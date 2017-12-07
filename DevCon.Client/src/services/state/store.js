@@ -73,16 +73,20 @@ const store = new Vuex.Store({
         commit(mutations.SET_CART_ID, result.data.cartId)
       }
     },
-    async addItemToCart({ state, dispatch, commit }, cartItem) {
-      const result = await apiStoreHelper.processApiCall(commit, cartRepo.addItemToCart(state.cartId, cartItem))
-      await dispatch(actions.RETRIEVE_CART)
-    },
     async retrieveCart({ state, dispatch, commit }) {
       if(!state.cartId) {
         await dispatch(actions.CREATE_CART)
       }
       const result = await apiStoreHelper.processApiGetCall(commit, cartRepo.retrieveCart(state.cartId))
       commit(mutations.SET_CART, result.data)
+    },
+    async addItemToCart({ state, dispatch, commit }, cartItem) {
+      const result = await apiStoreHelper.processApiCall(commit, cartRepo.addItemToCart(state.cartId, cartItem))
+      dispatch(actions.RETRIEVE_CART)
+    },
+    async removeCartItem({ state, dispatch, commit }, cartItem) {
+      const result = await apiStoreHelper.processApiCall(commit, cartRepo.removeCartItem(state.cartId, cartItem))
+      dispatch(actions.RETRIEVE_CART)
     }
   },
   getters: {

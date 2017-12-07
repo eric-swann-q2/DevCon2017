@@ -44,7 +44,6 @@ export default {
   props: ['value'],
   methods: {
     async addToCart() {
-      debugger
       await this.$store.dispatch(actions.ADD_ITEM_TO_CART, {
           sku: this.value.sku,
           name: this.value.name,

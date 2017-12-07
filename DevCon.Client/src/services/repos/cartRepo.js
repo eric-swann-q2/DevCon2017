@@ -15,6 +15,10 @@ export class ProductRepo {
   addItemToCart(cartId, cartItem) {
     return apiHelper.put(`command/carts/${cartId}/items/${cartItem.sku}`, cartItem)
   }
+
+  removeCartItem(cartId, cartItem) {
+    return apiHelper.delete(`command/carts/${cartId}/items/${cartItem.sku}`)
+  }
 }
 
 const _productRepo = new ProductRepo()
