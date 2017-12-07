@@ -16,6 +16,10 @@ export class ProductRepo {
     return apiHelper.put(`command/carts/${cartId}/items/${cartItem.sku}`, cartItem)
   }
 
+  updateCartItemQuantity(cartId, cartItem) {
+    return apiHelper.put(`command/carts/${cartId}/items/${cartItem.sku}/quantity`, cartItem)
+  }
+
   removeCartItem(cartId, cartItem) {
     return apiHelper.delete(`command/carts/${cartId}/items/${cartItem.sku}`)
   }

@@ -12,13 +12,13 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 
 import Vue from 'vue'
 import Quasar, {
-  QLayout, QTabs, QTab, QTabPane, QRouteTab,
+  QLayout,
   QCard, QCardMain, QCardSeparator, QCardActions, QCardTitle, QCardMedia,
   QTransition, QSlideTransition,
   QToolbar, QToolbarTitle, QAlert,
-  QBtn, QIcon, QPopover, QTooltip, QModal,
-  QField, QInput, QRadio, QSelect, QToggle,
-  QList, QListHeader, QSideLink, QCollapsible,
+  QBtn, QIcon, QTooltip,
+  QField, QInput,
+  QList, QListHeader, QSideLink,
   QItemSide, QItemMain, QItemSeparator, QItem, QItemTile,
   Ripple
 } from 'quasar'
@@ -31,13 +31,13 @@ import 'quasar-extras/animate/fadeOutRight.css'
 
 Vue.config.productionTip = false
 Vue.use(Quasar, {
-  components: [QLayout, QTabs, QTab, QTabPane, QRouteTab,
+  components: [QLayout,
     QCard, QCardMain, QCardSeparator, QCardActions, QCardTitle, QCardMedia,
     QTransition, QSlideTransition,
     QToolbar, QToolbarTitle, QAlert,
-    QBtn, QIcon, QPopover, QTooltip, QModal,
-    QField, QInput, QRadio, QSelect, QToggle, 
-    QList, QListHeader, QSideLink, QCollapsible,
+    QBtn, QIcon, QTooltip,
+    QField, QInput,
+    QList, QListHeader, QSideLink,
     QItemSide, QItemMain, QItemSeparator, QItem, QItemTile],
   directives: [Ripple]
 })

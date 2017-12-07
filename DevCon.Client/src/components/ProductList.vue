@@ -16,16 +16,16 @@ export default {
   name: 'product-list',
   async created() {
     await this.createCart()
-    await this.fetchData()
+    this.fetchData()
   },
   components: {
     ProductTile
   },
   methods: {
-    async createCart() {
+    createCart() {
       return this.$store.dispatch(actions.CREATE_CART)
     },
-    async fetchData() {
+    fetchData() {
       return this.$store.dispatch(actions.RETRIEVE_PRODUCTS)
     }
   },

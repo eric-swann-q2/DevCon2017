@@ -14,14 +14,14 @@ import CartTile from './CartTile'
 
 export default {
   name: 'cart',
-  async created() {
-    await this.fetchData()
+  created() {
+    this.fetchData()
   },
   components: {
     CartTile
   },
   methods: {
-    async fetchData() {
+    fetchData() {
       return this.$store.dispatch(actions.RETRIEVE_CART)
     }
   },

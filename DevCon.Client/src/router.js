@@ -2,6 +2,7 @@ import Vue from "vue"
 import Router from "vue-router"
 import ProductList from './components/ProductList'
 import Cart from './components/Cart'
+import RemovedProductsReport from './components/RemovedProductsReport'
 
 Vue.use(Router);
 
@@ -24,6 +25,11 @@ export const routes = [
     path: '/cart',
     component: Cart,
     meta: { navText: 'Ma stuff', icon: 'shopping_cart', includeInNav: true }
+  },
+  {
+    path: '/removedproductsreport',
+    component: RemovedProductsReport,
+    meta: { navText: 'Removed Products', icon: 'assessment', includeInNav: true }
   },
 
   // Always leave this last one

@@ -25,9 +25,11 @@ const store = new Vuex.Store({
     lastCommandResult: null,
 
     cartId: null,
-    cart: {cartTotal:0, products:[]},
+    cart: { cartTotal: 0, products: [] },
 
-    products: []
+    products: [],
+
+    removedProductsReport: { products: [] }
   },
   mutations: {
     setProcessing(state) {
@@ -56,6 +58,10 @@ const store = new Vuex.Store({
     },
     setCart(state, cart) {
       state.cart = cart
+    },
+
+    setRemovedProductsReport(state, report) {
+      state.removedProductsReport = report
     }
   },
 
@@ -74,7 +80,7 @@ const store = new Vuex.Store({
       }
     },
     async retrieveCart({ state, dispatch, commit }) {
-      if(!state.cartId) {
+      if (!state.cartId) {
         await dispatch(actions.CREATE_CART)
       }
       const result = await apiStoreHelper.processApiGetCall(commit, cartRepo.retrieveCart(state.cartId))
@@ -84,9 +90,18 @@ const store = new Vuex.Store({
       const result = await apiStoreHelper.processApiCall(commit, cartRepo.addItemToCart(state.cartId, cartItem))
       dispatch(actions.RETRIEVE_CART)
     },
+    async updateCartItemQuantity({ state, dispatch, commit }, cartItem) {
+      const result = await apiStoreHelper.processApiCall(commit, cartRepo.updateCartItemQuantity(state.cartId, cartItem))
+      dispatch(actions.RETRIEVE_CART)
+    },
     async removeCartItem({ state, dispatch, commit }, cartItem) {
       const result = await apiStoreHelper.processApiCall(commit, cartRepo.removeCartItem(state.cartId, cartItem))
       dispatch(actions.RETRIEVE_CART)
+    },
+
+    async retrieveRemovedProductsReport({ commit }) {
+      const result = await apiStoreHelper.processApiGetCall(commit, productRepo.retrieveRemovedProductsReport())
+      commit(mutations.SET_REMOVED_PRODUCTS_REPORT, result.data)
     }
   },
   getters: {

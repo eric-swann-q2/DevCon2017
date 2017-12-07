@@ -17,12 +17,14 @@
     </q-card-main>
     <q-card-separator />
     <q-card-actions>
-      <div class="row xs-gutter">
-        <div class="col-6">
-          <q-btn color="green-5" @click="remove()">Remove</q-btn>
-        </div>
-        <div class="col-6">
-          <q-input class="quantity" :min="1" :max="99" type="number" prefix="Quantity: " :value="value.quantity" @blur="changeQuantity" />
+      <div class="col actions">
+        <div class="row xs-gutter">
+          <div class="col-5">
+            <q-btn color="green-5" @click="remove()">Remove</q-btn>
+          </div>
+          <div class="col-5">
+            <q-input class="quantity" :min="1" :max="99" type="number" prefix="Quantity: " :value="value.quantity" @blur="changeQuantity" />
+          </div>
         </div>
       </div>
     </q-card-actions>
@@ -36,13 +38,17 @@ export default {
   name: 'cart-tile',
   props: ['value'],
   methods: {
-    changeQuantity() {
-
+    changeQuantity(event) {
+      this.value.quantity = event.srcElement.value
+      this.$store.dispatch(actions.UPDATE_CART_ITEM_QUANTITY, {
+        sku: this.value.sku,
+        quantity: this.value.quantity
+      })
     },
-    remove(){
+    remove() {
       this.$store.dispatch(actions.REMOVE_CART_ITEM, {
-          sku: this.value.sku
-        })
+        sku: this.value.sku
+      })
     }
   }
 }
