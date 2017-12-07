@@ -3,22 +3,8 @@ import apiHelper from '../apiHelper'
 export class ProductRepo {
   
   getProducts(tenantId) {
-    debugger
-    return apiHelper.get('products')
+    return apiHelper.get('query/products')
   }
-
-  // async getCustomForm(tenantId, customFormId) {
-  //   const result = await apiHelper.get(`management/financialinstitutions/${tenantId}/dynamicforms/${customFormId}`)
-  //   return {
-  //     data: {
-  //       id: result.data.dynamicFormId,
-  //       name: result.data.name,
-  //       title: result.data.title,
-  //       description: result.data.description,
-  //       formData: result.data.formData
-  //     }
-  //   }
-  // }
 
   // postCustomForm(tenantId, customForm) {
   //   const formData = JSON.stringify(customForm.formData)

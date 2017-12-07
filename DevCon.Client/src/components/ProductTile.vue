@@ -43,8 +43,17 @@ export default {
   },
   props: ['value'],
   methods: {
-    addToCart() {
-      
+    async addToCart() {
+      debugger
+      await this.$store.dispatch(actions.ADD_ITEM_TO_CART, {
+          sku: this.value.sku,
+          name: this.value.name,
+          image: this.value.image,
+          salePrice: this.value.salePrice,
+          customerTopRated: this.value.customerTopRated,
+          quantity: this.quantity
+        });
+      this.quantity = 1
     },
     quantityChanged() {
       if(!this.quantity || this.quantity < 1) {
@@ -85,8 +94,8 @@ export default {
 }
 
 .quantity {
-  margin-top:0px;
-  margin-bottom:0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .actions {

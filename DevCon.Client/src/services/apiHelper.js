@@ -21,7 +21,6 @@ export class ApiHelper {
 
   async get(url, requestConfig = null) {
     const response = await this._httpClient.get(url, requestConfig)
-    debugger
     return this._processResponse(response)
   }
 

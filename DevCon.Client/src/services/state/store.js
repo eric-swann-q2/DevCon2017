@@ -1,8 +1,10 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
 import mutations from './mutations'
+import actions from './actions'
 import apiStoreHelper from './apiStoreHelper'
 import productRepo from '../repos/productRepo'
+import cartRepo from '../repos/cartRepo'
 
 Vue.use(Vuex)
 
@@ -21,6 +23,9 @@ const store = new Vuex.Store({
     errors: [],
     messages: [],
     lastCommandResult: null,
+
+    cartId: null,
+    cartData: {},
 
     products: []
   },
@@ -45,6 +50,9 @@ const store = new Vuex.Store({
 
     setProducts(state, products) {
       state.products = products
+    },
+    setCartId(state, cartId) {
+      state.cartId = cartId
     }
   },
 
@@ -54,6 +62,20 @@ const store = new Vuex.Store({
         const result = await apiStoreHelper.processApiGetCall(commit, productRepo.getProducts())
         commit(mutations.SET_PRODUCTS, result.data)
       }
+    },
+    async createCart({ state, commit }) {
+      if (!state.cartId) {
+        const result = await apiStoreHelper.processApiCall(commit, cartRepo.createCart(), true)
+        commit(mutations.SET_CART_ID, result.data.cartId)
+      }
+    },
+    async addItemToCart({ state, dispatch, commit }, cartItem) {
+      const result = await apiStoreHelper.processApiCall(commit, cartRepo.addItemToCart(state.cartId, cartItem))
+      await dispatch(actions.RETRIEVE_CART)
+    },
+    async retrieveCart({ state, commit }) {
+      const result = await apiStoreHelper.processApiGetCall(commit, cartRepo.retrieveCart())
+      commit(mutations.SET_CART_DATA, result.data)
     }
   },
   getters: {

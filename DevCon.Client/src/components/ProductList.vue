@@ -15,12 +15,17 @@ import ProductTile from './ProductTile'
 export default {
   name: 'product-list',
   async created() {
+    debugger
+    await this.createCart()
     await this.fetchData()
   },
   components: {
     ProductTile
   },
   methods: {
+    async createCart() {
+      return this.$store.dispatch(actions.CREATE_CART)
+    },
     async fetchData() {
       return this.$store.dispatch(actions.RETRIEVE_PRODUCTS)
     }
