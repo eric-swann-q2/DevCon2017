@@ -1,0 +1,311 @@
+{
+	"info": {
+		"name": "DevCon2017",
+		"_postman_id": "ec00605d-5c31-e04d-a7a0-8ee205485b08",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Cart",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "343a685e-0207-4ca1-b8fc-c2cebf4da1c6",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"",
+							"if(responseCode.code === 200) {",
+							"    var jsonData = JSON.parse(responseBody);",
+							"    ",
+							"    postman.setEnvironmentVariable(\"cartId\", jsonData.cartId);",
+							"} "
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\": \"testUser\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:49968/command/carts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49968",
+					"path": [
+						"command",
+						"carts"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cart",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "883a2a46-d6a9-4a6a-a05c-16b8f986ca3b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\": \"testUser\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:49968/query/carts/{{cartId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49968",
+					"path": [
+						"query",
+						"carts",
+						"{{cartId}}"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add Cart Item",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d1149e6c-ded6-4d29-b9fc-48f330b27884",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "41582180-027b-4076-9d93-83f8993a9c00",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Definitive Technology - ProCinema 600 5.1-Channel Home Theater Speaker System - Black\",\n    \"image\": \"https://img.bbystatic.com/BestBuy_US/images/products/8206/8206201_sa.jpg\",\n    \"salePrice\": 499.98,\n    \"customerTopRated\": true,\n\t\"quantity\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:49968/command/carts/{{cartId}}/items/8206201",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49968",
+					"path": [
+						"command",
+						"carts",
+						"{{cartId}}",
+						"items",
+						"8206201"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Cart Item Quantity",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d1149e6c-ded6-4d29-b9fc-48f330b27884",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbc946e3-19ec-4906-86fb-000b29c9ce45",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"quantity\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:49968/command/carts/{{cartId}}/items/8206201/quantity",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49968",
+					"path": [
+						"command",
+						"carts",
+						"{{cartId}}",
+						"items",
+						"8206201",
+						"quantity"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Cart Item",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d1149e6c-ded6-4d29-b9fc-48f330b27884",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "24f8b02d-1ed6-4f69-840e-4ff9791bf38c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"quantity\": 1\n}"
+				},
+				"url": {
+					"raw": "http://localhost:49968/command/carts/{{cartId}}/items/8206201",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49968",
+					"path": [
+						"command",
+						"carts",
+						"{{cartId}}",
+						"items",
+						"8206201"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Removed Products",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6c51b3d9-9ffb-4265-a842-083f5c9aeca4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userId\": \"testUser\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:49968/query/products/removed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49968",
+					"path": [
+						"query",
+						"products",
+						"removed"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
