@@ -15,7 +15,6 @@ import ProductTile from './ProductTile'
 export default {
   name: 'product-list',
   async created() {
-    debugger
     await this.createCart()
     await this.fetchData()
   },

@@ -22,12 +22,12 @@ export default {
   },
   methods: {
     async fetchData() {
-      return this.$store.dispatch(actions.RETRIEVE_PRODUCTS)
+      return this.$store.dispatch(actions.RETRIEVE_CART)
     }
   },
   computed: {
     products() {
-      return this.$store.state.products
+      return this.$store.state.cart.products
     }
   }
 }

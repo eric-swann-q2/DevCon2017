@@ -6,5 +6,5 @@ export default {
   SET_PRODUCTS: 'setProducts',
 
   SET_CART_ID: 'setCartId',
-  SET_CART_DATA: 'setCartData'
+  SET_CART: 'setCart'
 }

@@ -2,12 +2,12 @@ import apiHelper from '../apiHelper'
 
 export class ProductRepo {
   
-  getCart() {
-    return apiHelper.get('query/carts')
+  retrieveCart(cartId) {
+    return apiHelper.get(`query/carts/${cartId}`)
   }
 
   createCart() {
-    return apiHelper.post('command/carts/', {
+    return apiHelper.post('command/carts', {
       userId: 'Meister Brau'
     })
   }

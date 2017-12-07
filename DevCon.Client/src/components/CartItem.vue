@@ -18,7 +18,7 @@
     <q-card-separator />
     <q-card-actions>
       <div class="col actions">
-        <q-input class="quantity" :min="1" :max="99" type="number" prefix="Quantity: " v-model="quantity" @blur="changeQuantity" />
+        <q-input class="quantity" :min="1" :max="99" type="number" prefix="Quantity: " v-model="value.quantity" @blur="changeQuantity" />
       </div>
     </q-card-actions>
   </q-card>
@@ -29,11 +29,6 @@ import actions from '../services/state/actions'
 
 export default {
   name: 'cart-item',
-  data() {
-    return {
-      quantity: 1
-    }
-  },
   props: ['value'],
   methods: {
     changeQuantity() {

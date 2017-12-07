@@ -2,7 +2,7 @@ import apiHelper from '../apiHelper'
 
 export class ProductRepo {
   
-  getProducts(tenantId) {
+  retrieveProducts(tenantId) {
     return apiHelper.get('query/products')
   }
 
