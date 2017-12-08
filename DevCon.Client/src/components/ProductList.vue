@@ -1,5 +1,5 @@
 <template>
-  <titled-card title="Shop Speakers">
+  <titled-card title="Drop tha' Boom">
     <div class="row xs-gutter">
       <div v-for="(product, i) in products" :key="i">
         <product-tile :value="product" />

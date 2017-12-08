@@ -39,12 +39,12 @@
 					"raw": "{\n\t\"userId\": \"testUser\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:49968/command/carts",
+					"raw": "http://localhost:5000/command/carts",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "49968",
+					"port": "5000",
 					"path": [
 						"command",
 						"carts"
@@ -80,12 +80,12 @@
 					"raw": "{\n\t\"userId\": \"testUser\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:49968/query/carts/{{cartId}}",
+					"raw": "http://localhost:5000/query/carts/{{cartId}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "49968",
+					"port": "5000",
 					"path": [
 						"query",
 						"carts",
@@ -132,12 +132,12 @@
 					"raw": "{\n    \"name\": \"Definitive Technology - ProCinema 600 5.1-Channel Home Theater Speaker System - Black\",\n    \"image\": \"https://img.bbystatic.com/BestBuy_US/images/products/8206/8206201_sa.jpg\",\n    \"salePrice\": 499.98,\n    \"customerTopRated\": true,\n\t\"quantity\": 1\n}"
 				},
 				"url": {
-					"raw": "http://localhost:49968/command/carts/{{cartId}}/items/8206201",
+					"raw": "http://localhost:5000/command/carts/{{cartId}}/items/8206201",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "49968",
+					"port": "5000",
 					"path": [
 						"command",
 						"carts",
@@ -186,12 +186,12 @@
 					"raw": "{\n\t\"quantity\": 2\n}"
 				},
 				"url": {
-					"raw": "http://localhost:49968/command/carts/{{cartId}}/items/8206201/quantity",
+					"raw": "http://localhost:5000/command/carts/{{cartId}}/items/8206201/quantity",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "49968",
+					"port": "5000",
 					"path": [
 						"command",
 						"carts",
@@ -241,12 +241,12 @@
 					"raw": "{\n\t\"quantity\": 1\n}"
 				},
 				"url": {
-					"raw": "http://localhost:49968/command/carts/{{cartId}}/items/8206201",
+					"raw": "http://localhost:5000/command/carts/{{cartId}}/items/8206201",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "49968",
+					"port": "5000",
 					"path": [
 						"command",
 						"carts",
@@ -285,12 +285,12 @@
 					"raw": "{\n\t\"userId\": \"testUser\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:49968/query/products/removed",
+					"raw": "http://localhost:5000/query/products/removed",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "49968",
+					"port": "5000",
 					"path": [
 						"query",
 						"products",

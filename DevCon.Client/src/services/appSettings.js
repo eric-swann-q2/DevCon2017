@@ -4,7 +4,7 @@ const _baseUrl = '#{BaseApiUrl}'
 
 export class AppSettings {
   get baseUrl() {
-    return this._getValueOrDefault(_baseUrl, 'http://localhost:49968/')
+    return this._getValueOrDefault(_baseUrl, 'http://localhost:5000/')
   }
 
   _getValueOrDefault(value, defaultValue) {
