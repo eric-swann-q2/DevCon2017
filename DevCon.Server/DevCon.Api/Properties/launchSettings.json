@@ -1,7 +1,6 @@
 {
   "profiles": {
     "Cars.Demo.Api": {
-      "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

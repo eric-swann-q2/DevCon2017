@@ -1,8 +1,7 @@
 {
 	"info": {
 		"name": "DevCon2017",
-		"_postman_id": "ec00605d-5c31-e04d-a7a0-8ee205485b08",
-		"description": "",
+		"_postman_id": "d41a7593-acdc-7312-cff1-183882769621",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -12,7 +11,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "343a685e-0207-4ca1-b8fc-c2cebf4da1c6",
+						"id": "b87385c0-8538-44a1-a52c-75033188e301",
 						"type": "text/javascript",
 						"exec": [
 							"tests[\"Status code is 200\"] = responseCode.code === 200;",
@@ -21,7 +20,7 @@
 							"if(responseCode.code === 200) {",
 							"    var jsonData = JSON.parse(responseBody);",
 							"    ",
-							"    postman.setEnvironmentVariable(\"cartId\", jsonData.cartId);",
+							"    pm.globals.set(\"cartId\", jsonData.cartId);",
 							"} "
 						]
 					}
@@ -50,8 +49,7 @@
 						"command",
 						"carts"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -61,7 +59,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "883a2a46-d6a9-4a6a-a05c-16b8f986ca3b",
+						"id": "0ae941a4-1d33-40db-9aa7-70d5df00098b",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -93,8 +91,7 @@
 						"carts",
 						"{{cartId}}"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -148,8 +145,7 @@
 						"items",
 						"8206201"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -204,8 +200,7 @@
 						"8206201",
 						"quantity"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -259,8 +254,7 @@
 						"items",
 						"8206201"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -302,8 +296,7 @@
 						"products",
 						"removed"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}
