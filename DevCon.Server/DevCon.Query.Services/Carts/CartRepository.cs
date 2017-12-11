@@ -18,4 +18,9 @@ namespace DevCon.Query.Services.Carts
             return _repository.RetrieveAsync<CartProjection>(cartId);
         }
     }
+
+    public interface ICartRepository
+    {
+        Task<CartProjection> GetProjectionAsync(Guid cartId);
+    }
 }

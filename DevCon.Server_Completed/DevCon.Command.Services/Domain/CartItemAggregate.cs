@@ -6,16 +6,9 @@ using DevCon.Events;
 
 namespace DevCon.Command.Services.Domain
 {
-    public class Cart : Aggregate
+    public class CartItemAggregate : Aggregate
     {
         private readonly List<CartItem> _cartItems = new List<CartItem>();
-
-        public Cart() { }
-
-        public Cart(string userId)
-        {
-            Emit(new CartCreated(Guid.NewGuid(), userId));
-        }
 
         public void AddCartItem(string sku, string name, decimal price, int quantity, bool customerTopRated, string image)
         {
@@ -68,13 +61,12 @@ namespace DevCon.Command.Services.Domain
             SubscribeTo<CartItemRemoved>(OnCartItemRemoved);
         }
 
-        // We take actions internally on an event here
-
         private void OnCartCreated(CartCreated evt)
         {
             AggregateId = evt.AggregateId;
         }
 
+        // We take actions internally on an event here
         private void OnCartItemAdded(CartItemAdded evt)
         {
             _cartItems.Add(new CartItem(evt.Sku, evt.Name, evt.SalePrice, evt.Quantity));

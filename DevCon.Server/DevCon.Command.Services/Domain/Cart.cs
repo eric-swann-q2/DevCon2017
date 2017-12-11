@@ -8,14 +8,20 @@ namespace DevCon.Command.Services.Domain
 {
     public class Cart : Aggregate
     {
-        private readonly List<CartItem> _cartItems = new List<CartItem>();
+        //Step 1: Adding the cart
 
-        public Cart() { }
+//        private readonly List<CartItem> _cartItems = new List<CartItem>();
+//
+//        public Cart() { }
+//
+//        public Cart(string userId)
+//        {
+//            Emit(new CartCreated(Guid.NewGuid(), userId));
+//        }
 
-        public Cart(string userId)
-        {
-            Emit(new CartCreated(Guid.NewGuid(), userId));
-        }
+
+
+        //Step 2: Adding Cart Items
 
         public void AddCartItem(string sku, string name, decimal price, int quantity, bool customerTopRated, string image)
         {

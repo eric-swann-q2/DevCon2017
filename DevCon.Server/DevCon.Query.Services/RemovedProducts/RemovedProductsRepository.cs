@@ -19,4 +19,9 @@ namespace DevCon.Query.Services.RemovedProducts
             return result;
         }
     }
+
+    public interface IRemovedProductsRepository
+    {
+        Task<RemovedProductsProjection> GetProjectionAsync();
+    }
 }
