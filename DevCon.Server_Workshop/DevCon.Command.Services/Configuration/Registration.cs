@@ -1,5 +1,5 @@
 ﻿using Cars.Configuration;
-using DevCon.Command.Services.Commands.CreateCart;
+using DevCon.Command.Services.Domain;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DevCon.Command.Services.Configuration
@@ -8,7 +8,7 @@ namespace DevCon.Command.Services.Configuration
     {
         public static IServiceCollection RegisterCommandServices(this IServiceCollection services)
         {
-            services.RegisterCommandHandlersInAssemblyOf<CreateCartCommand>();
+            services.RegisterCommandHandlersInAssemblyOf<CartItem>();
 
             return services;
         }
