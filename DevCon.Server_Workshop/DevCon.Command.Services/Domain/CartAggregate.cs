@@ -7,7 +7,6 @@
 //{
 //    public class CartAggregate : Aggregate
 //    {
-//        private readonly List<CartItem> _cartItems = new List<CartItem>();
 //
 //        public CartAggregate() { }
 //
