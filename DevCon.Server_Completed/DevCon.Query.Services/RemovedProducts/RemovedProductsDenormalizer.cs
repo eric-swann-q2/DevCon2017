@@ -1,23 +1,25 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Cars.EventSource.SerializedEvents;
+using Cars.EventSource.Storage;
+using Cars.EventStore.MongoDB.Projections;
 using Cars.Handlers;
 using Cars.Projections;
 using DevCon.Events;
 
 namespace DevCon.Query.Services.RemovedProducts
 {
-    public class RemovedProductsDenormalizer : IEventHandler<CartItemRemoved>
+    public class RemovedProductsDenormalizer : MongoDenormalizer, IEventHandler<CartItemRemoved>, IRemovedProductsDenormalizer
     {
-        private readonly IProjectionRepository _projectionRepository;
 
-        public RemovedProductsDenormalizer(IProjectionRepository projectionRepository)
+        public RemovedProductsDenormalizer(IProjectionRepository projectionRepository, IEventStore eventStore, IEventSerializer eventSerializer) 
+            : base(projectionRepository, eventStore, eventSerializer)
         {
-            _projectionRepository = projectionRepository;
         }
 
         public async Task ExecuteAsync(CartItemRemoved evt)
         {
-            var removedProductsProjection = await _projectionRepository.RetrieveAsync<RemovedProductsProjection>(Constants.ProjectionId) 
+            var removedProductsProjection = await Repository.RetrieveAsync<RemovedProductsProjection>(Constants.ProjectionId) 
                 ?? new RemovedProductsProjection();
             var product = removedProductsProjection.Products.FirstOrDefault(x => x.Sku == evt.Sku);
             if (product == null)
@@ -29,7 +31,12 @@ namespace DevCon.Query.Services.RemovedProducts
             {
                 product.Count++;
             }
-            await _projectionRepository.UpsertAsync(removedProductsProjection, evt);
+            await Repository.UpsertAsync(removedProductsProjection, evt);
+        }
+
+        public async Task RebuildAsync()
+        {
+            await RebuildAsync<RemovedProductsProjection>();
         }
     }
 }

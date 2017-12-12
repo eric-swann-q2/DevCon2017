@@ -13,6 +13,7 @@ namespace DevCon.Query.Services.Configuration
             services.AddSingleton<IProductRepository, ProductRepository>();
             services.AddSingleton<ICartRepository, CartRepository>();
             services.AddSingleton<IRemovedProductsRepository, RemovedProductsRepository>();
+            services.AddScoped<IRemovedProductsDenormalizer, RemovedProductsDenormalizer>();
             services.RegisterEventHandlersInAssemblyOf<ProductCatalogSettings>();
 
             return services;

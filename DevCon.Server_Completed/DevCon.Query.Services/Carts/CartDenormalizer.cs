@@ -1,5 +1,8 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Cars.EventSource.SerializedEvents;
+using Cars.EventSource.Storage;
+using Cars.EventStore.MongoDB.Projections;
 using Cars.Handlers;
 using Cars.Projections;
 using DevCon.Events;
@@ -7,17 +10,16 @@ using Mapster;
 
 namespace DevCon.Query.Services.Carts
 {
-    public class CartDenormalizer : 
+    public class CartDenormalizer : MongoDenormalizer,
         IEventHandler<CartCreated>,
         IEventHandler<CartItemAdded>,
         IEventHandler<CartItemQuantityUpdated>,
         IEventHandler<CartItemRemoved>
     {
-        private readonly IProjectionRepository _projectionRepository;
 
-        public CartDenormalizer(IProjectionRepository projectionRepository)
+        public CartDenormalizer(IProjectionRepository projectionRepository, IEventStore eventStore, IEventSerializer eventSerializer) 
+            : base(projectionRepository, eventStore, eventSerializer)
         {
-            _projectionRepository = projectionRepository;
         }
 
         public async Task ExecuteAsync(CartCreated evt)
@@ -28,33 +30,33 @@ namespace DevCon.Query.Services.Carts
                 UserId = evt.UserId
             };
 
-            await _projectionRepository.UpsertAsync(cartProjection, evt);
+            await Repository.UpsertAsync(cartProjection, evt);
         }
 
         public async Task ExecuteAsync(CartItemAdded evt)
         {
-            var cartProjection = await _projectionRepository.RetrieveAsync<CartProjection>(evt.AggregateId.ToString());
+            var cartProjection = await Repository.RetrieveAsync<CartProjection>(evt.AggregateId.ToString());
             cartProjection.Products.Add(evt.Adapt<CartProjection.CartProduct>());
             cartProjection.CartTotal = CalculateCartTotal(cartProjection);
-            await _projectionRepository.UpsertAsync(cartProjection, evt);
+            await Repository.UpsertAsync(cartProjection, evt);
         }
 
         public async Task ExecuteAsync(CartItemQuantityUpdated evt)
         {
-            var cartProjection = await _projectionRepository.RetrieveAsync<CartProjection>(evt.AggregateId.ToString());
+            var cartProjection = await Repository.RetrieveAsync<CartProjection>(evt.AggregateId.ToString());
             var cartItem = cartProjection.Products.First(x => x.Sku == evt.Sku);
             cartItem.Quantity = evt.Quantity;
             cartProjection.CartTotal = CalculateCartTotal(cartProjection);
-            await _projectionRepository.UpsertAsync(cartProjection, evt);
+            await Repository.UpsertAsync(cartProjection, evt);
         }
 
         public async Task ExecuteAsync(CartItemRemoved evt)
         {
-            var cartProjection = await _projectionRepository.RetrieveAsync<CartProjection>(evt.AggregateId.ToString());
+            var cartProjection = await Repository.RetrieveAsync<CartProjection>(evt.AggregateId.ToString());
             var cartItem = cartProjection.Products.First(x => x.Sku == evt.Sku);
             cartProjection.Products.Remove(cartItem);
             cartProjection.CartTotal = CalculateCartTotal(cartProjection);
-            await _projectionRepository.UpsertAsync(cartProjection, evt);
+            await Repository.UpsertAsync(cartProjection, evt);
         }
 
         private decimal CalculateCartTotal(CartProjection projection)
