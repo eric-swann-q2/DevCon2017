@@ -39,4 +39,9 @@
 //            await RebuildAsync<RemovedProductsProjection>();
 //        }
 //    }
+//
+//    public interface IRemovedProductsDenormalizer
+//    {
+//        Task RebuildAsync();
+//    }
 //}

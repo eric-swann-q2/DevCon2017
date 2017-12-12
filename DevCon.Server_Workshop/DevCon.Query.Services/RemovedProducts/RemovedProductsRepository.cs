@@ -19,4 +19,9 @@
 //            return result;
 //        }
 //    }
+//
+//    public interface IRemovedProductsRepository
+//    {
+//        Task<RemovedProductsProjection> GetProjectionAsync();
+//    }
 //}
