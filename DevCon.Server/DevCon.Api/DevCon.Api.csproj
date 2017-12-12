@@ -9,8 +9,8 @@
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.0.*" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.0.*" />
     <PackageReference Include="Mapster" Version="3.1.*" />
-    <PackageReference Include="Cars" Version="2.0.*" />
-    <PackageReference Include="Cars.EventStore.MongoDB" Version="2.0.*" />
+    <PackageReference Include="Cars" Version="2.1.*" />
+    <PackageReference Include="Cars.EventStore.MongoDB" Version="2.1.*" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.*" />
